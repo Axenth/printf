@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:08:10 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/08 16:31:44 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/08 17:12:06 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <stddef.h>
-# include <stdarg.h>
 
 typedef int				t_bool;
 enum {	false, true	};

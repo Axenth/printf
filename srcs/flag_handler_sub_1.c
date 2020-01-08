@@ -6,14 +6,12 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/07 19:53:53 by nvan-der       #+#    #+#                */
-/*   Updated: 2020/01/08 15:21:54 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/08 17:14:21 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdrs/ft_printf.h"
 #include "../hdrs/libft_func.h"
-#include <unistd.h>
-#include <stdarg.h>
 #include <stdlib.h>
 
 void			print_str(struct s_info info, char *str)

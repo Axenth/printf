@@ -6,14 +6,12 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/07 20:33:19 by nvan-der       #+#    #+#                */
-/*   Updated: 2020/01/08 16:31:46 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/08 17:14:32 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdrs/ft_printf.h"
 #include "../hdrs/libft_func.h"
-#include <unistd.h>
-#include <stdarg.h>
 #include <stdlib.h>
 
 static void	print_width(struct s_info info, char *str, int type, int i)

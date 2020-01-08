@@ -6,7 +6,7 @@
 #    By: jlensing <jlensing@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/20 16:04:04 by jlensing       #+#    #+#                 #
-#    Updated: 2020/01/08 16:33:14 by jlensing      ########   odam.nl          #
+#    Updated: 2020/01/08 17:10:14 by jlensing      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,9 +44,7 @@ FLGS = $(addprefix $(FLG_MAP), $(FLG))
 
 OBJS = $(SRCS:.c=.o) $(FLGS:.c=.o) $(LIBFT:.c=.o)
 
-TEST_OBJS = $(TEST:.c=.o)
-
-FLAGS = -Wall  -Wextra -g
+FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
@@ -62,17 +60,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) a.out
 
 re: fclean all
 
-# TODO Remove test.
-
-test:
-	$(CC) $(LIBFT) $(SRCS) $(FLGS) test.c -I $(HDRS) $(FLAGS)
-
-test_nik:
-	$(CC) $(LIBFT) $(SRCS) $(FLGS) test_nik.c -I $(HDRS) $(FLAGS)
-
-test_eval:
-	$(CC) $(LIBFT) $(SRCS) $(FLGS)  printf_tests.c -I $(HDRS) $(FLAGS)
+.PHONY: all clean fclean re
