@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 20:37:16 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/07 19:46:56 by nvan-der      ########   odam.nl         */
+/*   Updated: 2020/01/08 17:54:20 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static char	*fill_zero(int n)
 
 	i = 0;
 	hex = malloc(sizeof(char) * n + 1);
+	if (hex == NULL)
+		return (NULL);
 	while (i < n)
 	{
 		hex[i] = '0';
@@ -46,6 +48,8 @@ char		*flag_p(unsigned long ptr, struct s_info info)
 	{
 		free(hex);
 		hex = malloc(sizeof(char) * 2);
+		if (hex == NULL)
+			return (NULL);
 		hex[0] = '0';
 		hex[1] = '\0';
 	}

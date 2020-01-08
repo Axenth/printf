@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/22 14:22:13 by jlensing       #+#    #+#                */
-/*   Updated: 2019/12/24 04:35:21 by anonymous     ########   odam.nl         */
+/*   Updated: 2020/01/08 17:56:38 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static char	*reverse(char *hex)
 	j = 0;
 	i = ft_strlen(hex) - 1;
 	result = malloc(sizeof(char) * ft_strlen(hex) + 1);
+	if (result == NULL)
+		return (NULL);
 	while (i >= 0)
 	{
 		result[j] = hex[i];
@@ -57,19 +59,16 @@ char		*convert_to_hex(unsigned long value)
 
 	i = 0;
 	hex = malloc(sizeof(char) * 12);
+	if (hex == NULL)
+		return (NULL);
 	while (value)
 	{
 		leftover = value % 16;
 		if (leftover < 10)
-		{
 			hex[i] = 48 + leftover;
-			i++;
-		}
 		else
-		{
 			hex[i] = 55 + leftover;
-			i++;
-		}
+		i++;
 		value = value / 16;
 	}
 	if (i != 12)
