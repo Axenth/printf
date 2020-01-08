@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 15:39:19 by nvan-der       #+#    #+#                */
-/*   Updated: 2020/01/08 16:34:57 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/08 16:42:56 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,26 @@ char		*get_str(struct s_info info, void *temp)
 {
 	char *str;
 
-	if (info.format_type == 1 && temp != NULL)
-		str = flag_c((char)temp);
-	else if (info.format_type == 2 && temp != NULL)
-		str = flag_s((char *)temp, info);
-	else if (info.format_type == 3)
-		str = flag_p((unsigned long)temp, info);
-	else if (info.format_type == 4)
-		str = flag_di((signed int)temp);
-	else if (info.format_type == 5)
-		str = flag_u((unsigned int)temp);
-	else if (info.format_type == 6)
-		str = flag_x((unsigned int)temp, false);
-	else if (info.format_type == 7)
-		str = flag_x((int)temp, true);
-	else if (info.format_type == 8 && temp != NULL)
-		str = flag_procent();
-	else if (info.format_type == 99 & temp != NULL)
+	if (info.format_type >= 1 && info.format_type <= 8)
+	{
+		if (info.format_type == 1 && temp != NULL)
+			str = flag_c((char)temp);
+		else if (info.format_type == 2 && temp != NULL)
+			str = flag_s((char *)temp, info);
+		else if (info.format_type == 3)
+			str = flag_p((unsigned long)temp, info);
+		else if (info.format_type == 4)
+			str = flag_di((signed int)temp);
+		else if (info.format_type == 5)
+			str = flag_u((unsigned int)temp);
+		else if (info.format_type == 6)
+			str = flag_x((unsigned int)temp, false);
+		else if (info.format_type == 7)
+			str = flag_x((int)temp, true);
+		else if (info.format_type == 8 && temp != NULL)
+			str = flag_procent();
+	}
+	else
 		str = ft_strdup("");
 	return (str);
 }
