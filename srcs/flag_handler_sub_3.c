@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   flag_handler_sub_3.c                               :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
+/*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/08 15:39:19 by nvan-der       #+#    #+#                */
-/*   Updated: 2020/01/08 17:09:42 by jlensing      ########   odam.nl         */
+/*   Created: 2020/01/08 15:39:19 by jlensing       #+#    #+#                */
+/*   Updated: 2020/01/10 14:50:08 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ struct s_info			handle_initial_info(struct s_info info)
 	if (info.width < 0)
 	{
 		info.width *= -1;
-		info.dash_flag = true;
+		info.dash_flag = e_true;
 	}
 	if (info.toprint < 0)
-		info.precision_flag = false;
+		info.precision_flag = e_false;
 	return (info);
 }
 
@@ -55,9 +55,9 @@ char					*get_str(struct s_info info, void *temp)
 	else if (info.format_type == 5)
 		str = flag_u((unsigned int)temp);
 	else if (info.format_type == 6)
-		str = flag_x((unsigned int)temp, false);
+		str = flag_x((unsigned int)temp, e_false);
 	else if (info.format_type == 7)
-		str = flag_x((int)temp, true);
+		str = flag_x((int)temp, e_true);
 	else if (info.format_type == 8 && temp != NULL)
 		str = flag_procent();
 	else
@@ -75,7 +75,7 @@ struct s_handler_info	handle_nulls(struct s_info info, char *str)
 			info.toprint = 3;
 		else if (info.format_type == 1 || info.format_type == 2)
 		{
-			if (info.print == true)
+			if (info.print == e_true)
 				info.width -= 1;
 		}
 		else
@@ -93,7 +93,7 @@ struct s_handler_info	handle_second_nulls(struct s_info info, char *str)
 	if (ft_strncmp(str, "", 1) == 0)
 		free(str);
 	str = ft_strdup("(null)");
-	if (info.precision_flag == false)
+	if (info.precision_flag == e_false)
 		info.toprint = ft_strlen(str);
 	hi.info = info;
 	hi.str = str;

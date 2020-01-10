@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/03 17:25:02 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/07 19:38:36 by nvan-der      ########   odam.nl         */
+/*   Updated: 2020/01/10 14:50:08 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static struct s_info		set_values(int position, int prec_value
 												, struct s_info info)
 {
 	info.position += position;
-	info.precision_flag = true;
+	info.precision_flag = e_true;
 	info.toprint = prec_value;
 	info.prec = prec_value;
 	info.position = position;
@@ -40,7 +40,7 @@ static struct s_info		unpack_prec_data(struct s_info info,
 static struct s_info		if_posistion_astrix(struct s_info info,
 														va_list args)
 {
-	info.precision_flag = true;
+	info.precision_flag = e_true;
 	info.toprint = va_arg(args, int);
 	info.prec = info.toprint;
 	info.position += 2;
@@ -50,7 +50,7 @@ static struct s_info		if_posistion_astrix(struct s_info info,
 static struct s_prec_data	while_string_is_dot(struct s_prec_data prec_data)
 {
 	prec_data.start = 0;
-	if (in_set(prec_data.string[prec_data.position]) == false)
+	if (in_set(prec_data.string[prec_data.position]) == e_false)
 		prec_data.start = prec_data.position;
 	while (!in_set(prec_data.string[prec_data.position]))
 		prec_data.position++;
@@ -64,7 +64,7 @@ static struct s_prec_data	while_string_is_dot(struct s_prec_data prec_data)
 	if (prec_data.prec_value == 0)
 	{
 		prec_data.info.format_type = 99;
-		prec_data.info.print = false;
+		prec_data.info.print = e_false;
 	}
 	prec_data.info = set_values(prec_data.position,
 									prec_data.prec_value, prec_data.info);

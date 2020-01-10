@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:23:27 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/07 19:38:34 by nvan-der      ########   odam.nl         */
+/*   Updated: 2020/01/10 14:50:08 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ static struct s_info	check_flags(struct s_info info, const char *string,
 	{
 		if (string[position] == '-')
 		{
-			info.dash_flag = true;
+			info.dash_flag = e_true;
 		}
 		if (string[position] == '0')
 		{
-			info.zero_flag = true;
+			info.zero_flag = e_true;
 		}
 		position++;
 	}
 	if (string[position] == '*')
 	{
-		info.width_flag = true;
+		info.width_flag = e_true;
 		info.width = va_arg(args, int);
 		position++;
 	}
@@ -68,7 +68,7 @@ struct s_info			check_initial_precision(const char *string,
 		if (in_set(string[position + 1]))
 		{
 			position += 1;
-			info.print = false;
+			info.print = e_false;
 		}
 		while (!in_set(string[position]) && !in_flag_set(string[position]))
 		{
@@ -85,7 +85,7 @@ static struct s_info	set_values(struct s_info info,
 	width_info = flag_width(string, position, width_info);
 	info.width = width_info.width;
 	info.position = width_info.pos;
-	info.width_flag = true;
+	info.width_flag = e_true;
 	return (info);
 }
 
@@ -108,11 +108,11 @@ struct s_info			flag_checker(const char *string, int position,
 	info.format_type = check_format(string[position]);
 	info.position = position;
 	if (info.format_type == 0)
-		info.skip = true;
-	if (info.format_type == 1 && info.precision_flag == true)
+		info.skip = e_true;
+	if (info.format_type == 1 && info.precision_flag == e_true)
 	{
 		info.toprint = 1;
-		info.print = true;
+		info.print = e_true;
 	}
 	return (info);
 }

@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 20:37:16 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/08 17:54:20 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/10 14:49:51 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char		*flag_p(unsigned long ptr, struct s_info info)
 
 	i = 15;
 	hex = convert_to_hex(ptr);
-	if ((ptr == 0) && info.precision_flag == true)
+	if ((ptr == 0) && info.precision_flag == e_true)
 	{
 		free(hex);
 		hex = fill_zero(info.toprint);

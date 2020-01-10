@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:08:10 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/08 17:12:06 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/10 16:57:55 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stddef.h>
 
 typedef int				t_bool;
-enum {	false, true	};
+enum {	e_false, e_true	};
 
 struct					s_info
 {
@@ -33,6 +33,7 @@ struct					s_info
 	t_bool				print;
 	t_bool				negative_flag;
 	t_bool				skip;
+	t_bool				error;
 };
 
 struct					s_width
@@ -68,7 +69,7 @@ struct s_info			check_precision(const char *string, int position,
 									struct s_info info, va_list args);
 int						handle_width(struct s_info info, char *str, int i);
 struct s_info			handle_negative(struct s_info info);
-void					print_str(struct s_info info, char *str);
+struct s_info			print_str(struct s_info info, char *str);
 struct s_info			set_info_values(char *str, void *temp,
 														struct s_info info);
 struct s_info			set_second_info_values(struct s_info info,

@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 20:00:11 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/07 19:49:40 by nvan-der      ########   odam.nl         */
+/*   Updated: 2020/01/10 14:49:51 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*flag_s(char *str, struct s_info info)
 {
 	char *result;
 
-	if (info.print == true)
+	if (info.print == e_true)
 		result = ft_strdup(str);
 	else
 		result = ft_strdup("");

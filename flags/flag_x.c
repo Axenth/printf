@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/22 14:14:13 by jlensing       #+#    #+#                */
-/*   Updated: 2019/12/20 19:41:40 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/10 14:50:08 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*flag_x(unsigned int value, t_bool uppercase)
 	else
 		str = convert_to_hex(value);
 	i = ft_strlen(str);
-	if (uppercase == true)
+	if (uppercase == e_true)
 	{
 		while (i >= 0)
 		{
@@ -31,7 +31,7 @@ char	*flag_x(unsigned int value, t_bool uppercase)
 			i--;
 		}
 	}
-	else if (uppercase == false)
+	else if (uppercase == e_false)
 	{
 		while (i >= 0)
 		{

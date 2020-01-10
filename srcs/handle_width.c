@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/22 18:26:00 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/07 18:05:37 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/10 16:56:33 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		handle_width(struct s_info info, char *str, int i)
 	{
 		while (i < (info.width - info.toprint))
 		{
-			ft_putchar_fd(1, ' ');
+			info = ft_putchar_fd(1, ' ', info);
 			i++;
 		}
 	}
@@ -28,13 +28,13 @@ int		handle_width(struct s_info info, char *str, int i)
 		while (i < ((info.width - ft_strlen(str)) +
 								(ft_strlen(str) - info.toprint)))
 		{
-			ft_putchar_fd(1, ' ');
+			info = ft_putchar_fd(1, ' ', info);
 			i++;
 		}
 		while (info.width == info.toprint &&
 							i < info.width - ft_strlen(str))
 		{
-			ft_putchar_fd(1, ' ');
+			info = ft_putchar_fd(1, ' ', info);
 			i++;
 		}
 	}

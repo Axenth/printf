@@ -6,16 +6,17 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:08:10 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/07 17:16:07 by nvan-der      ########   odam.nl         */
+/*   Updated: 2020/01/10 16:55:57 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_FUNC_H
 # define LIBFT_FUNC_H
 # include <stddef.h>
+# include "../hdrs/ft_printf.h"
 
-void			ft_putstr_fd(int fd, char *str, int n);
-void			ft_putchar_fd(int fd, char c);
+struct s_info	ft_putstr_fd(int fd, char *str, int n, struct s_info info);
+struct s_info	ft_putchar_fd(int fd, char c, struct s_info info);
 void			ft_putnbr_unsigned_fd(unsigned int n, int fd);
 char			*convert_to_hex(unsigned long value);
 int				ft_tolower(int c);

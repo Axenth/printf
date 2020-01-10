@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:39:52 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/08 17:57:47 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/10 16:57:39 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,31 @@
 t_bool					check_zero_flag(struct s_info info)
 {
 	if (info.format_type >= 1 || info.format_type <= 3 || info.format_type == 8)
-		return (true);
+		return (e_true);
 	if ((info.format_type >= 4 && info.format_type <= 7) &&
-												info.precision_flag == false)
-		return (true);
-	return (false);
+												info.precision_flag == e_false)
+		return (e_true);
+	return (e_false);
 }
 
 static struct s_info	handle_functions(struct s_info info, char *str,
 											void *temp)
 {
+	if (info.format_type == 3 && temp == NULL)
+		info.width -= 2;
+	if (info.format_type == 2 && temp == NULL && info.precision_flag == e_false)
+		info.width += 1;
 	info = set_second_info_values(info, str, temp);
 	width_true(info, str, 0);
-	if (info.negative_flag == true)
+	if (info.negative_flag == e_true)
 	{
-		ft_putchar_fd(1, '-');
+		info = ft_putchar_fd(1, '-', info);
 		info.amount += 1;
 	}
 	width_zero_true(info, str, 0);
 	info = handle_extras(info, temp);
 	handle_zeros(info, str);
-	print_str(info, str);
+	info = print_str(info, str);
 	width_dash_true(info, str, 0);
 	return (info);
 }
@@ -52,8 +56,13 @@ struct s_info			flag_handler(struct s_info info, va_list args)
 	info = handle_initial_info(info);
 	temp = set_temp(info, args);
 	str = get_str(info, temp);
+	if (str == NULL)
+	{
+		info.error = e_true;
+		return (info);
+	}
 	if (info.format_type == 4 && (signed int)temp < 0)
-		info.negative_flag = true;
+		info.negative_flag = e_true;
 	info = set_info_values(str, temp, info);
 	if (temp == NULL && (info.format_type < 4 || info.format_type > 7))
 	{
