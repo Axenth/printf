@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 15:39:19 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/10 14:50:08 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/10 18:06:55 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char					*get_str(struct s_info info, void *temp)
 	else if (info.format_type == 6)
 		str = flag_x((unsigned int)temp, e_false);
 	else if (info.format_type == 7)
-		str = flag_x((int)temp, e_true);
+		str = flag_x((unsigned int)temp, e_true);
 	else if (info.format_type == 8 && temp != NULL)
 		str = flag_procent();
 	else
