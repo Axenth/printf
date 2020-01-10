@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:39:52 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/10 16:57:39 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/10 18:02:38 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,27 @@ static struct s_info	handle_functions(struct s_info info, char *str,
 	return (info);
 }
 
+struct s_handler_info	null_check(char *str, struct s_info info, void *temp)
+{
+	struct s_handler_info handler_info;
+
+	if (temp == NULL && (info.format_type < 4 || info.format_type > 7))
+	{
+		handler_info = handle_nulls(info, str);
+		info = handler_info.info;
+		str = handler_info.str;
+		if (info.format_type != 3 && info.format_type != 1)
+		{
+			handler_info = handle_second_nulls(info, str);
+			info = handler_info.info;
+			str = handler_info.str;
+		}
+	}
+	handler_info.info = info;
+	handler_info.str = str;
+	return (handler_info);
+}
+
 struct s_info			flag_handler(struct s_info info, va_list args)
 {
 	void					*temp;
@@ -64,18 +85,9 @@ struct s_info			flag_handler(struct s_info info, va_list args)
 	if (info.format_type == 4 && (signed int)temp < 0)
 		info.negative_flag = e_true;
 	info = set_info_values(str, temp, info);
-	if (temp == NULL && (info.format_type < 4 || info.format_type > 7))
-	{
-		handler_info = handle_nulls(info, str);
-		info = handler_info.info;
-		str = handler_info.str;
-		if (info.format_type != 3 && info.format_type != 1)
-		{
-			handler_info = handle_second_nulls(info, str);
-			info = handler_info.info;
-			str = handler_info.str;
-		}
-	}
+	handler_info = null_check(str, info, temp);
+	info = handler_info.info;
+	str = handler_info.str;
 	info = handle_functions(info, str, temp);
 	free(str);
 	return (info);

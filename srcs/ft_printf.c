@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:08:18 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/10 16:56:17 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/10 17:47:09 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static struct s_info		reset_struct(struct s_info info)
 	info.print = e_true;
 	info.negative_flag = e_false;
 	info.skip = e_false;
+	info.error = e_false;
 	return (info);
 }
 
@@ -46,6 +47,7 @@ static struct s_info		init_struct(void)
 	info.print = e_true;
 	info.negative_flag = e_false;
 	info.skip = e_false;
+	info.error = e_false;
 	return (info);
 }
 

@@ -6,7 +6,7 @@
 #    By: jlensing <jlensing@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/20 16:04:04 by jlensing       #+#    #+#                 #
-#    Updated: 2020/01/10 16:53:28 by jlensing      ########   odam.nl          #
+#    Updated: 2020/01/10 17:47:46 by jlensing      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC = ft_printf.c flag_checker.c flag_handler.c in_set.c in_flag_set.c \
 
 SRC_MAP = srcs/
 
-LIB_SRC = info = ft_putchar_fd.c ft_putstr_fd.c ft_tolower.c \
+LIB_SRC = ft_putchar_fd.c ft_putstr_fd.c ft_tolower.c \
  		ft_convert_to_hex.c ft_strdup.c ft_strlen.c ft_toupper.c ft_itoa.c \
 		 ft_atoi.c ft_substr.c ft_strncmp.c ft_strlcat.c \
 		 ft_strlcpy.c ft_itoa_unsigned.c ft_strjoin.c
@@ -50,7 +50,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) rcs $@ $^
-	$(RM) *.o
 
 %.o: %.c $(HDRS)
 	clang -o $@ -c $< $(FLAGS)
