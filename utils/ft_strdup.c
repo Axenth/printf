@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   handle_width.c                                     :+:    :+:            */
+/*   ft_strdup.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 18:26:00 by jlensing       #+#    #+#                */
+/*   Created: 2019/11/01 15:40:18 by jlensing       #+#    #+#                */
 /*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/ft_printf.h"
 #include "../hdrs/utils.h"
+#include <stdlib.h>
 
-int		handle_width(struct s_info info, char *str, int i)
+char	*ft_strdup(const char *s1)
 {
-	if (ft_strlen(str) - info.toprint < 0)
+	int		size;
+	int		counter;
+	char	*dup;
+
+	size = 0;
+	counter = 0;
+	size = ft_strlen(s1);
+	dup = malloc(sizeof(char) * size + 1);
+	if (dup == NULL)
+		return (NULL);
+	while (counter < size)
 	{
-		while (i < (info.width - info.toprint))
-		{
-			info = ft_putchar_fd(1, ' ', info);
-			i++;
-		}
+		dup[counter] = s1[counter];
+		counter++;
 	}
-	else
-	{
-		while (i < ((info.width - ft_strlen(str)) +
-								(ft_strlen(str) - info.toprint)))
-		{
-			info = ft_putchar_fd(1, ' ', info);
-			i++;
-		}
-		while (info.width == info.toprint &&
-							i < info.width - ft_strlen(str))
-		{
-			info = ft_putchar_fd(1, ' ', info);
-			i++;
-		}
-	}
-	return (i);
+	dup[counter] = '\0';
+	return (dup);
 }

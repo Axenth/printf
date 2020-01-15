@@ -6,12 +6,12 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/03 17:25:02 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/10 14:50:08 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdrs/ft_printf.h"
-#include "../hdrs/libft_func.h"
+#include "../hdrs/utils.h"
 #include <stdlib.h>
 
 static struct s_info		set_values(int position, int prec_value

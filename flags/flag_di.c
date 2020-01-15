@@ -6,11 +6,11 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 21:18:57 by jlensing       #+#    #+#                */
-/*   Updated: 2019/12/10 15:08:25 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/libft_func.h"
+#include "../hdrs/utils.h"
 
 char	*flag_di(signed int value)
 {

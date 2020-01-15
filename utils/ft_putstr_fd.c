@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   handle_width.c                                     :+:    :+:            */
+/*   ft_putstr_fd.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 18:26:00 by jlensing       #+#    #+#                */
+/*   Created: 2019/11/20 19:17:52 by jlensing       #+#    #+#                */
 /*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/ft_printf.h"
 #include "../hdrs/utils.h"
 
-int		handle_width(struct s_info info, char *str, int i)
+struct s_info	ft_putstr_fd(int fd, char *str, int n, struct s_info info)
 {
-	if (ft_strlen(str) - info.toprint < 0)
+	int i;
+
+	i = 0;
+	while (str[i] && i < n)
 	{
-		while (i < (info.width - info.toprint))
-		{
-			info = ft_putchar_fd(1, ' ', info);
-			i++;
-		}
+		info = ft_putchar_fd(fd, str[i], info);
+		i++;
 	}
-	else
-	{
-		while (i < ((info.width - ft_strlen(str)) +
-								(ft_strlen(str) - info.toprint)))
-		{
-			info = ft_putchar_fd(1, ' ', info);
-			i++;
-		}
-		while (info.width == info.toprint &&
-							i < info.width - ft_strlen(str))
-		{
-			info = ft_putchar_fd(1, ' ', info);
-			i++;
-		}
-	}
-	return (i);
+	return (info);
 }

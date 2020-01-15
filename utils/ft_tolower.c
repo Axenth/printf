@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   flag_procent.c                                     :+:    :+:            */
+/*   ft_tolower.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 14:50:48 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Created: 2019/10/28 14:53:44 by jlensing       #+#    #+#                */
+/*   Updated: 2019/11/19 16:43:23 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/utils.h"
-
-char	*flag_procent(void)
+int		ft_tolower(int c)
 {
-	return (ft_strdup("%"));
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }

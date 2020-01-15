@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   flag_procent.c                                     :+:    :+:            */
+/*   ft_putchar_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 14:50:48 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Created: 2019/11/20 19:17:00 by jlensing       #+#    #+#                */
+/*   Updated: 2020/01/10 16:58:34 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/utils.h"
+#include "../hdrs/ft_printf.h"
+#include <unistd.h>
 
-char	*flag_procent(void)
+struct s_info	ft_putchar_fd(int fd, char c, struct s_info info)
 {
-	return (ft_strdup("%"));
+	ssize_t i;
+
+	i = write(fd, &c, sizeof(char));
+	if (i < 0)
+		info.error = e_true;
+	return (info);
 }

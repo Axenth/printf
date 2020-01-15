@@ -6,12 +6,12 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 15:39:19 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/10 18:06:55 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdrs/ft_printf.h"
-#include "../hdrs/libft_func.h"
+#include "../hdrs/utils.h"
 #include <stdarg.h>
 #include <stdlib.h>
 

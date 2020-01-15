@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   handle_negative.c                                  :+:    :+:            */
+/*   ft_strlcpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/02 17:27:48 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Created: 2019/10/30 14:13:08 by jlensing       #+#    #+#                */
+/*   Updated: 2019/11/06 13:35:11 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/ft_printf.h"
-#include "../hdrs/utils.h"
+#include <stddef.h>
 
-struct s_info	handle_negative(struct s_info info)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	if (info.negative_flag == e_true)
+	char		*tdst;
+	char		*tend;
+	const char	*tsrc;
+
+	tdst = dst;
+	tend = dst + dstsize;
+	tsrc = src;
+	if (src == NULL)
+		return (0);
+	while (*tsrc != '\0' && tdst < tend)
 	{
-		info = ft_putchar_fd(1, '-', info);
-		info.amount += 1;
+		*tdst = *tsrc;
+		tdst++;
+		tsrc++;
 	}
-	return (info);
+	if (tdst < tend)
+		*tdst = 0;
+	else if (dstsize > 0)
+		tdst[-1] = 0;
+	while (*tsrc != '\0')
+		tsrc++;
+	return (tsrc - src);
 }

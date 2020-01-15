@@ -6,12 +6,12 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/22 15:44:19 by jlensing       #+#    #+#                */
-/*   Updated: 2019/12/10 15:41:34 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdrs/ft_printf.h"
-#include "../hdrs/libft_func.h"
+#include "../hdrs/utils.h"
 #include <stdlib.h>
 
 struct s_width	flag_width(const char *str, int position, struct s_width info)

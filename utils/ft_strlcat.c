@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   handle_width.c                                     :+:    :+:            */
+/*   ft_strlcat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 18:26:00 by jlensing       #+#    #+#                */
+/*   Created: 2019/10/30 18:29:28 by jlensing       #+#    #+#                */
 /*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/ft_printf.h"
 #include "../hdrs/utils.h"
 
-int		handle_width(struct s_info info, char *str, int i)
+size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	if (ft_strlen(str) - info.toprint < 0)
-	{
-		while (i < (info.width - info.toprint))
-		{
-			info = ft_putchar_fd(1, ' ', info);
-			i++;
-		}
-	}
-	else
-	{
-		while (i < ((info.width - ft_strlen(str)) +
-								(ft_strlen(str) - info.toprint)))
-		{
-			info = ft_putchar_fd(1, ' ', info);
-			i++;
-		}
-		while (info.width == info.toprint &&
-							i < info.width - ft_strlen(str))
-		{
-			info = ft_putchar_fd(1, ' ', info);
-			i++;
-		}
-	}
-	return (i);
+	size_t dstl;
+	size_t srcl;
+
+	dstl = ft_strlen(dst);
+	srcl = ft_strlen(src);
+	if (!dstsize || dstsize < dstl)
+		return (dstl + srcl - (dstl - dstsize));
+	dstsize -= dstl;
+	ft_strlcpy(dst + dstl, src, dstsize);
+	return (dstl + srcl);
 }

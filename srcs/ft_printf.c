@@ -6,12 +6,12 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:08:18 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/10 17:47:09 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdrs/ft_printf.h"
-#include "../hdrs/libft_func.h"
+#include "../hdrs/utils.h"
 #include <stdarg.h>
 
 static struct s_info		reset_struct(struct s_info info)

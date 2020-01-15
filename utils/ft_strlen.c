@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   flag_procent.c                                     :+:    :+:            */
+/*   ft_strlen.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/22 14:50:48 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Created: 2019/11/22 14:36:18 by jlensing       #+#    #+#                */
+/*   Updated: 2019/12/17 19:21:00 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/utils.h"
-
-char	*flag_procent(void)
+int		ft_strlen(const char *str)
 {
-	return (ft_strdup("%"));
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

@@ -6,12 +6,12 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/07 19:53:53 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/10 16:57:15 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdrs/ft_printf.h"
-#include "../hdrs/libft_func.h"
+#include "../hdrs/utils.h"
 #include <stdlib.h>
 
 struct s_info	print_str(struct s_info info, char *str)

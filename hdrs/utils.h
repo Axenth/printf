@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   libft_func.h                                       :+:    :+:            */
+/*   utils.h                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:08:10 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/10 16:55:57 by jlensing      ########   odam.nl         */
+/*   Updated: 2020/01/14 14:36:09 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_FUNC_H
-# define LIBFT_FUNC_H
+#ifndef UTILS_H
+# define UTILS_H
 # include <stddef.h>
 # include "../hdrs/ft_printf.h"
 
