@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/07 19:53:53 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Created: 2020/01/07 19:53:53 by jlensing      #+#    #+#                 */
+/*   Updated: 2020/10/23 19:30:41 by axenth        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 struct s_info	print_str(struct s_info info, char *str)
 {
 	if (info.print == e_true)
-		info = ft_putstr_fd(1, str, info.toprint, info);
+		info = ft_putstr_fd(info.fd, str, info.toprint, info);
 	return (info);
 }
 
@@ -86,10 +86,10 @@ struct s_info	handle_extras(struct s_info info, void *temp)
 													info.width == 0)
 		info.amount -= 1;
 	if (info.format_type == 1 && temp == NULL && info.print == e_true)
-		info = ft_putchar_fd(1, '\0', info);
+		info = ft_putchar_fd(info.fd, '\0', info);
 	if (info.format_type == 3)
 	{
-		info = ft_putstr_fd(1, "0x", 3, info);
+		info = ft_putstr_fd(info.fd, "0x", 3, info);
 		info.amount += 2;
 	}
 	return (info);
@@ -105,7 +105,7 @@ void			handle_zeros(struct s_info info, char *str)
 	{
 		while (i < info.toprint - ft_strlen(str))
 		{
-			info = ft_putchar_fd(1, '0', info);
+			info = ft_putchar_fd(info.fd, '0', info);
 			i++;
 		}
 		i = 0;

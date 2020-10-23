@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/20 16:08:10 by jlensing       #+#    #+#                */
-/*   Updated: 2020/01/10 16:57:55 by jlensing      ########   odam.nl         */
+/*   Created: 2019/11/20 16:08:10 by jlensing      #+#    #+#                 */
+/*   Updated: 2020/10/23 19:31:24 by axenth        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct					s_info
 	int					toprint;
 	int					amount;
 	int					prec;
+	int					fd;
 	t_bool				width_flag;
 	t_bool				dash_flag;
 	t_bool				zero_flag;
@@ -59,6 +60,7 @@ struct					s_handler_info
 };
 
 int						ft_printf(const char *format, ...);
+int						ft_fprintf(int fd, const char *format, ...);
 struct s_info			flag_checker(const char *string, int position,
 							struct s_info info, va_list args);
 struct s_info			flag_handler(struct s_info info, va_list args);
