@@ -14,48 +14,10 @@
 #include "../hdrs/utils.h"
 #include <stdarg.h>
 
-static struct s_info		reset_struct(struct s_info info)
-{
-	info.width = 0;
-	info.width_flag = e_false;
-	info.dash_flag = e_false;
-	info.zero_flag = e_false;
-	info.precision_flag = e_false;
-	info.toprint = 0;
-	info.prec = 0;
-	info.print = e_true;
-	info.negative_flag = e_false;
-	info.skip = e_false;
-	info.error = e_false;
-	return (info);
-}
-
-static struct s_info		init_struct(int fd)
-{
-	struct s_info info;
-
-	info.format_type = 0;
-	info.position = 0;
-	info.width = 0;
-	info.toprint = 0;
-	info.amount = 0;
-	info.prec = 0;
-	info.fd = fd;
-	info.width_flag = e_false;
-	info.dash_flag = e_false;
-	info.zero_flag = e_false;
-	info.precision_flag = e_false;
-	info.print = e_true;
-	info.negative_flag = e_false;
-	info.skip = e_false;
-	info.error = e_false;
-	return (info);
-}
-
-static struct s_info		ft_printf_loop(const char *format, int i,
+static struct s_info	ft_printf_loop(const char *format, int i,
 										va_list args, struct s_info info)
 {
-	int temp;
+	int	temp;
 
 	info.format_type = 0;
 	if (format[i] == '%')
@@ -78,7 +40,7 @@ static struct s_info		ft_printf_loop(const char *format, int i,
 	return (info);
 }
 
-int							ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	int					i;
 	va_list				args;
@@ -96,7 +58,7 @@ int							ft_printf(const char *format, ...)
 		}
 		else if (format[i] != '%')
 		{
-			info = ft_putchar_fd(info.fd, format[i], info);
+			info = ft_putchar_fd_util(info.fd, format[i], info);
 			info.amount++;
 		}
 		if (info.error == e_true)
@@ -107,7 +69,7 @@ int							ft_printf(const char *format, ...)
 	return (info.amount);
 }
 
-int							ft_fprintf(int fd, const char *format, ...)
+int	ft_fprintf(int fd, const char *format, ...)
 {
 	int					i;
 	va_list				args;
@@ -125,7 +87,7 @@ int							ft_fprintf(int fd, const char *format, ...)
 		}
 		else if (format[i] != '%')
 		{
-			info = ft_putchar_fd(info.fd, format[i], info);
+			info = ft_putchar_fd_util(info.fd, format[i], info);
 			info.amount++;
 		}
 		if (info.error == e_true)
@@ -133,5 +95,42 @@ int							ft_fprintf(int fd, const char *format, ...)
 		i++;
 	}
 	va_end(args);
+	return (info.amount);
+}
+
+static int	increment(int *i, struct s_info info)
+{
+	if (info.error == e_true)
+		return (-1);
+	*i += 1;
+	return (0);
+}
+
+int	ft_sprintf(char **s, const char *format, ...)
+{
+	int					i;
+	va_list				args;
+	struct s_info		info;
+
+	info = init_struct(-1);
+	i = 0;
+	va_start(args, format);
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%')
+		{
+			info = ft_printf_loop(format, i, args, info);
+			i = info.position;
+		}
+		else if (format[i] != '%')
+		{
+			info = ft_putchar_fd_util(info.fd, format[i], info);
+			info.amount++;
+		}
+		if (increment(&i, info) == -1)
+			return (-1);
+	}
+	va_end(args);
+	*s = ft_strdup_util(info.str);
 	return (info.amount);
 }

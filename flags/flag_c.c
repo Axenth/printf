@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 19:16:23 by jlensing      #+#    #+#                 */
-/*   Updated: 2020/01/10 17:47:40 by jlensing      ########   odam.nl         */
+/*   Updated: 2021/02/24 13:06:19 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*flag_c(char c)
 {
-	char *str;
+	char	*str;
 
 	str = malloc(sizeof(char) * 1);
 	if (str == NULL)

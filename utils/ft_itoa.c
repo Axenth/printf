@@ -6,14 +6,14 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 14:09:27 by jlensing      #+#    #+#                 */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Updated: 2021/02/24 13:46:11 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdrs/utils.h"
 #include <stdlib.h>
 
-static int		isnegative(int n)
+static int	isnegative(int n)
 {
 	if (n < 0)
 	{
@@ -22,9 +22,9 @@ static int		isnegative(int n)
 	return (n);
 }
 
-static int		count_amount(int temp, int sign)
+static int	count_amount(int temp, int sign)
 {
-	int amount;
+	int	amount;
 
 	if (sign)
 		amount = 1;
@@ -38,16 +38,16 @@ static int		count_amount(int temp, int sign)
 	return (amount);
 }
 
-static char		*check_value(int n)
+static char	*check_value(int n)
 {
 	if (n == 0 || n == -0)
-		return (ft_strdup("0"));
+		return (ft_strdup_util("0"));
 	if (n == -2147483648)
-		return (ft_strdup("2147483648"));
+		return (ft_strdup_util("2147483648"));
 	return (NULL);
 }
 
-static char		*calc_result(int n, int amount)
+static char	*calc_result(int n, int amount)
 {
 	int		i;
 	char	*result;
@@ -65,7 +65,7 @@ static char		*calc_result(int n, int amount)
 	return (result);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa_util(int n)
 {
 	char	*result;
 	int		amount;

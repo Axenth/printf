@@ -14,7 +14,8 @@ NAME = libftprintf.a
 
 SRC = ft_printf.c flag_checker.c flag_handler.c in_set.c in_flag_set.c \
 		handle_precision.c handle_width.c handle_negative.c \
-		flag_handler_sub_1.c flag_handler_sub_2.c flag_handler_sub_3.c
+		flag_handler_sub_1.c flag_handler_sub_2.c flag_handler_sub_3.c \
+		init_reset.c
 
 SRC_MAP = srcs/
 

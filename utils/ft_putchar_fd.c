@@ -11,14 +11,40 @@
 /* ************************************************************************** */
 
 #include "../hdrs/ft_printf.h"
+#include "../hdrs/utils.h"
 #include <unistd.h>
+#include <stdlib.h>
 
-struct s_info	ft_putchar_fd(int fd, char c, struct s_info info)
+static char	*return_char_as_string(char c)
 {
-	ssize_t i;
+	char	*temp;
 
-	i = write(fd, &c, sizeof(char));
-	if (i < 0)
-		info.error = e_true;
+	temp = malloc(sizeof(char) * 2);
+	temp[0] = c;
+	temp[1] = '\0';
+	return (temp);
+}
+
+struct s_info	ft_putchar_fd_util(int fd, char c, struct s_info info)
+{
+	ssize_t	i;
+	char	*temp;
+	char	*temp2;
+
+	if (info.sprintf == e_false)
+	{
+		i = write(fd, &c, sizeof(char));
+		if (i < 0)
+			info.error = e_true;
+	}
+	else
+	{
+		temp = ft_strdup_util(info.str);
+		temp2 = return_char_as_string(c);
+		free(info.str);
+		info.str = ft_strjoin_util(temp, temp2);
+		free(temp);
+		free(temp2);
+	}
 	return (info);
 }

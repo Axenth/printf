@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:39:52 by jlensing      #+#    #+#                 */
-/*   Updated: 2020/10/23 19:32:57 by axenth        ########   odam.nl         */
+/*   Updated: 2021/02/24 13:12:35 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-t_bool					check_zero_flag(struct s_info info)
+t_bool	check_zero_flag(struct s_info info)
 {
 	if ((info.format_type >= 1 && info.format_type <= 3)
 		|| info.format_type == 8)
 		return (e_true);
-	if ((info.format_type >= 4 && info.format_type <= 7) &&
-												info.precision_flag == e_false)
+	if ((info.format_type >= 4 && info.format_type <= 7)
+		&& info.precision_flag == e_false)
 		return (e_true);
 	return (e_false);
 }
@@ -37,7 +37,7 @@ static struct s_info	handle_functions(struct s_info info, char *str,
 	width_true(info, str, 0);
 	if (info.negative_flag == e_true)
 	{
-		info = ft_putchar_fd(info.fd, '-', info);
+		info = ft_putchar_fd_util(info.fd, '-', info);
 		info.amount += 1;
 	}
 	width_zero_true(info, str, 0);
@@ -50,7 +50,7 @@ static struct s_info	handle_functions(struct s_info info, char *str,
 
 struct s_handler_info	null_check(char *str, struct s_info info, void *temp)
 {
-	struct s_handler_info handler_info;
+	struct s_handler_info	handler_info;
 
 	if (temp == NULL && (info.format_type < 4 || info.format_type > 7))
 	{
@@ -69,7 +69,7 @@ struct s_handler_info	null_check(char *str, struct s_info info, void *temp)
 	return (handler_info);
 }
 
-struct s_info			flag_handler(struct s_info info, va_list args)
+struct s_info	flag_handler(struct s_info info, va_list args)
 {
 	void					*temp;
 	char					*str;

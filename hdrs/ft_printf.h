@@ -35,6 +35,8 @@ struct					s_info
 	t_bool				negative_flag;
 	t_bool				skip;
 	t_bool				error;
+	t_bool				sprintf;
+	char				*str;
 };
 
 struct					s_width
@@ -61,6 +63,7 @@ struct					s_handler_info
 
 int						ft_printf(const char *format, ...);
 int						ft_fprintf(int fd, const char *format, ...);
+int						ft_sprintf(char **s, const char *format, ...);
 struct s_info			flag_checker(const char *string, int position,
 							struct s_info info, va_list args);
 struct s_info			flag_handler(struct s_info info, va_list args);
@@ -68,14 +71,14 @@ int						arg_counter(const char *string);
 t_bool					in_set(char c);
 t_bool					in_flag_set(char c);
 struct s_info			check_precision(const char *string, int position,
-									struct s_info info, va_list args);
+							struct s_info info, va_list args);
 int						handle_width(struct s_info info, char *str, int i);
 struct s_info			handle_negative(struct s_info info);
 struct s_info			print_str(struct s_info info, char *str);
 struct s_info			set_info_values(char *str, void *temp,
-														struct s_info info);
+							struct s_info info);
 struct s_info			set_second_info_values(struct s_info info,
-													char *str, void *temp);
+							char *str, void *temp);
 struct s_info			handle_extras(struct s_info info, void *temp);
 void					handle_zeros(struct s_info info, char *str);
 void					*set_temp(struct s_info info, va_list args);
@@ -87,14 +90,16 @@ char					*flag_p(unsigned long ptr, struct s_info info);
 char					*flag_di(signed int value);
 char					*flag_u(unsigned int value);
 char					*flag_x(unsigned int value, t_bool uppercase);
-char					*flag_procent();
+char					*flag_procent(void);
 struct s_width			flag_width(const char *str, int position,
-											struct s_width info);
+							struct s_width info);
 void					width_true(struct s_info info, char *str, int i);
 void					width_zero_true(struct s_info info, char *str, int i);
 void					width_dash_true(struct s_info info, char *str, int i);
 t_bool					check_zero_flag(struct s_info info);
 struct s_handler_info	handle_nulls(struct s_info info, char *str);
 struct s_handler_info	handle_second_nulls(struct s_info info, char *str);
+struct s_info			reset_struct(struct s_info info);
+struct s_info			init_struct(int fd);
 
 #endif

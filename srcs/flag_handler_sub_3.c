@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 15:39:19 by jlensing      #+#    #+#                 */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Updated: 2021/02/24 13:18:29 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-struct s_info			handle_initial_info(struct s_info info)
+struct s_info	handle_initial_info(struct s_info info)
 {
 	if (info.width < 0)
 	{
@@ -27,9 +27,9 @@ struct s_info			handle_initial_info(struct s_info info)
 	return (info);
 }
 
-void					*set_temp(struct s_info info, va_list args)
+void	*set_temp(struct s_info info, va_list args)
 {
-	void *temp;
+	void	*temp;
 
 	if (info.format_type != 8)
 		temp = NULL;
@@ -40,9 +40,9 @@ void					*set_temp(struct s_info info, va_list args)
 	return (temp);
 }
 
-char					*get_str(struct s_info info, void *temp)
+char	*get_str(struct s_info info, void *temp)
 {
-	char *str;
+	char	*str;
 
 	if (info.format_type == 1 && temp != NULL)
 		str = flag_c((char)temp);
@@ -61,13 +61,13 @@ char					*get_str(struct s_info info, void *temp)
 	else if (info.format_type == 8 && temp != NULL)
 		str = flag_procent();
 	else
-		str = ft_strdup("");
+		str = ft_strdup_util("");
 	return (str);
 }
 
 struct s_handler_info	handle_nulls(struct s_info info, char *str)
 {
-	struct s_handler_info hi;
+	struct s_handler_info	hi;
 
 	if (info.toprint == 0 && info.format_type != 99)
 	{
@@ -88,13 +88,13 @@ struct s_handler_info	handle_nulls(struct s_info info, char *str)
 
 struct s_handler_info	handle_second_nulls(struct s_info info, char *str)
 {
-	struct s_handler_info hi;
+	struct s_handler_info	hi;
 
-	if (ft_strncmp(str, "", 1) == 0)
+	if (ft_strncmp_util(str, "", 1) == 0)
 		free(str);
-	str = ft_strdup("(null)");
+	str = ft_strdup_util("(null)");
 	if (info.precision_flag == e_false)
-		info.toprint = ft_strlen(str);
+		info.toprint = ft_strlen_util(str);
 	hi.info = info;
 	hi.str = str;
 	return (hi);

@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 20:37:16 by jlensing      #+#    #+#                 */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Updated: 2021/02/24 13:06:34 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ static char	*fill_zero(int n)
 	return (hex);
 }
 
-char		*flag_p(unsigned long ptr, struct s_info info)
+char	*flag_p(unsigned long ptr, struct s_info info)
 {
 	char	*hex;
 	int		i;
 
 	i = 15;
-	hex = convert_to_hex(ptr);
+	hex = convert_to_hex_util(ptr);
 	if ((ptr == 0) && info.precision_flag == e_true)
 	{
 		free(hex);
@@ -55,7 +55,7 @@ char		*flag_p(unsigned long ptr, struct s_info info)
 	}
 	while (i >= 0)
 	{
-		hex[i] = ft_tolower(hex[i]);
+		hex[i] = ft_tolower_util(hex[i]);
 		i--;
 	}
 	return (hex);

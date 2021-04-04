@@ -6,16 +6,16 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 14:09:27 by jlensing      #+#    #+#                 */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Updated: 2021/02/24 13:46:55 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hdrs/utils.h"
 #include <stdlib.h>
 
-static int		count_amount(unsigned int temp)
+static int	count_amount(unsigned int temp)
 {
-	unsigned int amount;
+	unsigned int	amount;
 
 	amount = 0;
 	while (temp > 0)
@@ -26,14 +26,14 @@ static int		count_amount(unsigned int temp)
 	return (amount);
 }
 
-static char		*check_value(unsigned int n)
+static char	*check_value(unsigned int n)
 {
 	if (n == 0 || n == -0)
-		return (ft_strdup("0"));
+		return (ft_strdup_util("0"));
 	return (NULL);
 }
 
-static char		*calc_result(long n, unsigned int amount)
+static char	*calc_result(long n, unsigned int amount)
 {
 	int		i;
 	char	*result;
@@ -53,7 +53,7 @@ static char		*calc_result(long n, unsigned int amount)
 	return (result);
 }
 
-char			*ft_itoa_unsigned(unsigned int n)
+char	*ft_itoa_util_unsigned_util(unsigned int n)
 {
 	char				*result;
 	unsigned int		amount;

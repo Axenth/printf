@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/03 17:25:02 by jlensing      #+#    #+#                 */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Updated: 2021/02/24 13:38:16 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "../hdrs/utils.h"
 #include <stdlib.h>
 
-static struct s_info		set_values(int position, int prec_value
-												, struct s_info info)
+static struct s_info	set_values(int position, int prec_value
+													, struct s_info info)
 {
 	info.position += position;
 	info.precision_flag = e_true;
@@ -25,7 +25,7 @@ static struct s_info		set_values(int position, int prec_value
 	return (info);
 }
 
-static struct s_info		unpack_prec_data(struct s_info info,
+static struct s_info	unpack_prec_data(struct s_info info,
 										struct s_prec_data prec_data)
 {
 	info.format_type = prec_data.info.format_type;
@@ -37,7 +37,7 @@ static struct s_info		unpack_prec_data(struct s_info info,
 	return (info);
 }
 
-static struct s_info		if_posistion_astrix(struct s_info info,
+static struct s_info	if_posistion_astrix(struct s_info info,
 														va_list args)
 {
 	info.precision_flag = e_true;
@@ -54,11 +54,11 @@ static struct s_prec_data	while_string_is_dot(struct s_prec_data prec_data)
 		prec_data.start = prec_data.position;
 	while (!in_set(prec_data.string[prec_data.position]))
 		prec_data.position++;
-	prec_data.s = ft_substr(prec_data.string, prec_data.start,
-										prec_data.position - prec_data.start);
+	prec_data.s = ft_substr_util(prec_data.string, prec_data.start,
+			prec_data.position - prec_data.start);
 	if (prec_data.s != NULL)
 	{
-		prec_data.prec_value = ft_atoi(prec_data.s);
+		prec_data.prec_value = ft_atoi_util(prec_data.s);
 		free(prec_data.s);
 	}
 	if (prec_data.prec_value == 0)
@@ -67,14 +67,14 @@ static struct s_prec_data	while_string_is_dot(struct s_prec_data prec_data)
 		prec_data.info.print = e_false;
 	}
 	prec_data.info = set_values(prec_data.position,
-									prec_data.prec_value, prec_data.info);
+			prec_data.prec_value, prec_data.info);
 	return (prec_data);
 }
 
-struct s_info				check_precision(const char *string, int position,
-										struct s_info info, va_list args)
+struct s_info	check_precision(const char *string, int position,
+									struct s_info info, va_list args)
 {
-	struct s_prec_data data;
+	struct s_prec_data	data;
 
 	data.info = info;
 	data.string = string;

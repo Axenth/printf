@@ -6,7 +6,7 @@
 /*   By: jlensing <jlensing@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/20 16:23:27 by jlensing      #+#    #+#                 */
-/*   Updated: 2020/01/14 14:35:27 by jlensing      ########   odam.nl         */
+/*   Updated: 2021/02/24 13:08:52 by jlensing      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static struct s_info	check_flags(struct s_info info, const char *string,
 	return (info);
 }
 
-int						check_format(char c)
+int	check_format(char c)
 {
 	if (c == 'c')
 		return (1);
@@ -60,7 +60,7 @@ int						check_format(char c)
 	return (0);
 }
 
-struct s_info			check_initial_precision(const char *string,
+struct s_info	check_initial_precision(const char *string,
 										int position, struct s_info info)
 {
 	if (string[position] == '.')
@@ -89,10 +89,10 @@ static struct s_info	set_values(struct s_info info,
 	return (info);
 }
 
-struct s_info			flag_checker(const char *string, int position,
+struct s_info	flag_checker(const char *string, int position,
 									struct s_info info, va_list args)
 {
-	struct s_width width_info;
+	struct s_width	width_info;
 
 	info.format_type = 0;
 	position += 1;
