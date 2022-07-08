@@ -1,4 +1,4 @@
-# ft_printf [![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/jlensing/ft_printf)](https://github.com/JaeSeoKim/badge42)
+# ft_printf [![jlensing's 42 cub3d Score](https://badge42.vercel.app/api/v2/cl1jwurq1001109l1q4s085aw/project/1852689)](https://github.com/JaeSeoKim/badge42)
 
 usage: <br/>
 
